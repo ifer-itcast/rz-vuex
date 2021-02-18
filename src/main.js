@@ -27,7 +27,23 @@ const store = new Vuex.Store({
       return state.list.filter(item => item > 5)
     } */
     filterList: state => state.list.filter(item => item > 5),
+    // !获取 modules 中的数据方法2，快捷访问
+    token: state => state.user.token,
+    name: state => state.setting.name
   },
+  modules: {
+    // !存放子模块的属性
+    user: {
+      state: {
+        token: '#$%^&'
+      }
+    },
+    setting: {
+      state: {
+        name: 'ifer'
+      }
+    }
+  }
 });
 
 Vue.config.productionTip = false;

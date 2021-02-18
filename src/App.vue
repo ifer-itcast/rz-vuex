@@ -6,13 +6,19 @@
     <button @click="handleClick2">+8 async</button>
     <hr>
     {{filterList}}
+    <hr>
+    <test1/>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import Test1 from './components/Test1'
 export default {
   name: 'App',
+  components: {
+    Test1
+  },
   computed: {
     // !#1 获取 Vuex 中 state 的 2 种方式
     /* count() {
