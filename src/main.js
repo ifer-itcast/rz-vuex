@@ -27,15 +27,22 @@ const store = new Vuex.Store({
       return state.list.filter(item => item > 5)
     } */
     filterList: state => state.list.filter(item => item > 5),
-    // !获取 modules 中的数据方法2，快捷访问
+    // 获取 modules 中的数据方法2，快捷访问
     token: state => state.user.token,
     name: state => state.setting.name
   },
   modules: {
-    // !存放子模块的属性
+    // 存放子模块的属性
     user: {
+      namespaced: true,
       state: {
         token: '#$%^&'
+      },
+      // !默认情况下（无 namespaced） modules 中的 mutations、actions、getters 可以像外部的 mutations 等一样直接访问
+      mutations: {
+        updateToken(state) {
+          state.token = 'xxx'
+        }
       }
     },
     setting: {
